@@ -1,0 +1,26 @@
+-- Cria o banco de dados 'escola' (se não existir)
+CREATE DATABASE IF NOT EXISTS escola;
+
+-- Usa o banco de dados 'escola'
+USE escola;
+
+-- Cria a tabela 'tb_turma'
+CREATE TABLE IF NOT EXISTS tb_turma (
+  id_turma INT AUTO_INCREMENT PRIMARY KEY, -- Chave primária auto-incrementada
+  nm_turma VARCHAR(200) NOT NULL,         -- Nome da turma
+  ds_curso VARCHAR(200) NOT NULL,         -- Descrição do curso
+  nr_ano_letivo INT NOT NULL,             -- Ano letivo
+  qtd_capacidade INT NOT NULL,            -- Capacidade da turma
+  bt_ativo BOOLEAN DEFAULT TRUE,          -- Indica se a turma está ativa (padrão: TRUE)
+  dt_inclusao DATETIME DEFAULT CURRENT_TIMESTAMP -- Data de inclusão (automática)
+);
+
+-- Insere alguns dados de exemplo (opcional)
+INSERT INTO tb_turma (nm_turma, ds_curso, nr_ano_letivo, qtd_capacidade, bt_ativo)
+VALUES 
+  ('Turma A', 'Matemática', 2023, 30, TRUE),
+  ('Turma B', 'Português', 2023, 25, TRUE),
+  ('Turma C', 'História', 2024, 20, FALSE);
+
+-- Seleciona todos os dados da tabela para verificação
+SELECT * FROM tb_turma;
